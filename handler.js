@@ -593,6 +593,7 @@ module.exports = {
                         this.reply(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy*`, m)
                         continue // Limit habis
                     }
+                    
                     if (plugin.level > _user.level) {
                         this.reply(m.chat, `diperlukan level ${plugin.level} untuk menggunakan perintah ini. Level kamu ${_user.level}`, m)
                         continue // If the level has not been reached
@@ -786,6 +787,8 @@ sourceUrl: "https://zyfn.pw"
 }[type]
 if (msgg) return conn.sendBut(m.chat, " ", msgg, 'VERIFY', '.daftar', m) 
 }
+
+
 
 let fs = require('fs')
 let chalk = require('chalk')
