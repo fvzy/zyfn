@@ -697,23 +697,39 @@ module.exports = {
         let fetch = require('node-fetch')
         let text = ''
         switch (action) {
-            case 'add':
+        case 'add':
             case 'remove':
                 if (chat.welcome) {
                     let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                     for (let user of participants) {
-                       let pp = './src/welcome.jpg'
+                        let pp = 'https://telegra.ph/file/2d06f0936842064f6b3bb.png'
                         try {
                             pp = await this.profilePictureUrl(user, 'image')
                         } catch (e) {
+
                         } finally {
-                            text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Hii👋').replace('@subject', groupMetadata.subject).replace('@desc', groupMetadata.desc.toString()) :
-                                (chat.sBye || this.bye || conn.bye || 'Bye👋'))
-                                this.sendButtonImg(id, pp, text, "Group Message", "Hi👋", "wkwk", null)
-                                }
+                            text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
+                                (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', await this.getName(user))
+                            let wel = API('males', '/welcome2', {
+                                profile: pp,
+                                username: await this.getName(user),
+                                background: 'https://file.zyfn.pw/file/UvhKWQv28TjW.jpeg',
+                                groupname: await this.getName(id),
+                                membercount: groupMetadata.participants.length
+                            })
+                            let lea = API('males', '/goodbye2', {
+                                profile: pp,
+                                username: await this.getName(user),
+                                background: 'https://file.zyfn.pw/file/UvhKWQv28TjW.jpeg',
+                                groupname: await this.getName(id),
+                                membercount: groupMetadata.participants.length
+                            })
+                            await this.sendButtonImg(id, action === 'add' ? wel : lea, text, wm, action === 'add' ? 'Selamat Datang' : 'Sampai Jumpa', action === 'add' ? '.intro' : '-') 
+                        }
                     }
                 }
                 break
+
             case 'promote':
                 text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
             case 'demote':
@@ -755,10 +771,20 @@ global.dfail = (type, m, conn) => {
         private: '[🛑] Perintah ini hanya dapat digunakan di Chat Pribadi!',
         admin: '[🛑] Perintah ini hanya untuk *Admin* grup!',
         botAdmin: '[🛑] Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-        unreg: '[🛑] Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
         restrict: '[🛑] Fitur ini di *disable*!'
     }[type]
-    if (msg) return m.reply(msg)
+if (msg) return conn.reply(m.chat, msg, false, { quoted: m, contextInfo: { externalAdReply: { showAdAttribution: true,
+mediaUrl: "https://instagram.com/zyfn.dev",
+title: "https://ditzzsenpai.wtf",
+body: "Zyfn Bot",
+sourceUrl: "https://zyfn.pw"
+  }
+ } 
+})
+    let msgg = {
+    	unreg: '❗Verifikasi di perlukan untuk menambahkan user ke dalam database•\n\n📁➞ Klik Verify dibawah ini untuk daftar database BOT'
+}[type]
+if (msgg) return conn.sendBut(m.chat, " ", msgg, 'VERIFY', '.daftar', m) 
 }
 
 let fs = require('fs')
