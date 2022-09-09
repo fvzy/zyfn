@@ -234,11 +234,6 @@ console.log(color(tampilTanggal, "pink"));
 console.log(color(tampilWaktu, "pink"));
 console.log(color(tampilHari, "pink"));
 
-CFonts.say('Created By Aldi', {
-  font: 'chrome',
-  align: 'center',
-  gradient: ['red', 'magenta']
-})
 CFonts.say(`${package.name} By ${package.author.name || package.author}`, {
   font: 'console',
   align: 'center',
