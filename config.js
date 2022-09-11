@@ -19,8 +19,8 @@ global.web = 'zyfn.pw' //ubah jadi website lu, bisa link ig, link github, link y
 global.price1 = '1 bulan = 10.000\n2 Minggu 7.000\n1 Minggu 5.000'
 
 //=======『 Tampilan Dan Lainnya 』============//
-global.fotonya1 = 'https://telegra.ph/file/b07c42b74d795aa10c604.jpg' //ganti jadi foto bot mu
-global.fotonya2 = 'https://telegra.ph/file/b07c42b74d795aa10c604.jpg' //ini juga ganti 
+global.fotonya1 = 'https://file.zyfn.pw/file/5Wou83t7Cq3w.jpg' //ganti jadi foto bot mu
+global.fotonya2 = 'https://file.zyfn.pw/file/5Wou83t7Cq3w.jpg' //ini juga ganti 
 global.lolkey = 'WibuXploit' //biar mudah ngegantinya semisal apikeynya expired:v
 global.zenzkey = 'BagasPrdn' //ganti jadi apikey lu kalau expired
 global.wm = '  𝙕𝙮𝙛𝙣 𝘽𝙤𝙩 '
@@ -35,7 +35,7 @@ global.wait = '_*tunggu sedang di proses...*_'
 global.eror = '_*Server Error*_'
 global.benar = 'Benar ✅\n'
 global.salah = 'Salah ❌\n'
-global.stiker_wait = 'Stiker sedang dibuat'
+global.stiker_wait = 'Please Wait..... Creating Sticker'
 global.packname = '𝙕𝙮𝙛𝙣 𝘽𝙤𝙩'
 global.author = 'Web : https://zyfn.pw'
 

@@ -59,7 +59,7 @@ let handler = async (m, { conn, usedPrefix, text }) => {
       }
     }else if (global.db.data.users[user].pasangan == m.sender){
       global.db.data.users[m.sender].pasangan = user
-      conn.reply(m.chat,`Selamat anda resmi berpacaran dengan @${user.split('@')[0]}\n\nSemoga langgeng dan bahagia selalu 🥳🥳🥳`,m,{contextInfo: {
+      conn.reply(m.chat,`Selamat anda resmi berpacaran dengan @${user.split('@')[0]}\n\nSemoga langgeng dan bahagia selalu `,m,{contextInfo: {
         mentionedJid: [user]
       }})
     }else {
